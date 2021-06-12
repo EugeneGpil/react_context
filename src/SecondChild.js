@@ -11,10 +11,11 @@ const SecondChild = () => {
             <SomeContext.Consumer>
               {({someValue, setSomeValue}) => {
 
+                const setters = {setAnotherValue, setSomeValue}
+
                 const onChange = (e) => {
                   let name = e.target.name
                   name = `${name.charAt(0).toUpperCase()}${name.slice(1)}`
-                  const setters = {setAnotherValue, setSomeValue}
                   setters[`set${name}`](e.target.value)
                 }
 
