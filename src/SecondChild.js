@@ -12,7 +12,6 @@ const SecondChild = () => {
               {({someValue, setSomeValue}) => {
 
                 const onChange = (e) => {
-                  console.log(e)
                   let name = e.target.name
                   name = `${name.charAt(0).toUpperCase()}${name.slice(1)}`
                   const setters = {setAnotherValue, setSomeValue}
