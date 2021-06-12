@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import SomeContext from './SomeContext'
+import AnotherContext from './AnotherContext'
+import Child from './Child'
 
-function App() {
+const App = () => {
+
+  const [someValue, setSomeValue] = useState('some value')
+  const [anotherValue, setAnotherValue] = useState('another value')
+
+  const someValueState = {someValue, setSomeValue}
+  const anotherValueState = {anotherValue, setAnotherValue}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AnotherContext.Provider value={anotherValueState}>
+        <SomeContext.Provider value={someValueState}>
+          <div>
+            App component
+          </div>
+          <Child />
+        </SomeContext.Provider>
+      </AnotherContext.Provider>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
